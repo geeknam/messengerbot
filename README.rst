@@ -11,7 +11,7 @@ messengerbot
 .. image:: https://img.shields.io/gratipay/geeknam.svg
    :target: https://gratipay.com/geeknam/
 
-Python client for Google Cloud Messaging for Android (GCM)
+Python client for Messenger Platform API
 
 Installation
 -------------

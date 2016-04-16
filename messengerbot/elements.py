@@ -17,6 +17,7 @@ class Element(object):
             raise ValueError(
                 'Element.title has more than 45 characters'
             )
+        return self._title
 
     @property
     def subtitle(self):
@@ -24,6 +25,7 @@ class Element(object):
             raise ValueError(
                 'Element.subtitle has more than 80 characters'
             )
+        return self._subtitle
 
     def to_dict(self):
         return {
