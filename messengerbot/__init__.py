@@ -1,4 +1,5 @@
 import os
+import requests
 
 
 class MessengerException(Exception):
@@ -25,7 +26,7 @@ class MessengerClient(object):
 
     def send(self, message):
         params = {
-            'access_token': access_token
+            'access_token': self.access_token
         }
         response = requests.post(
             self.GRAPH_API_URL, params=params,

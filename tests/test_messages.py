@@ -16,6 +16,14 @@ class MessagesTestCase(TestCase):
             '{"message": {"text": "Hello World"}, "recipient": {"id": "123"}}'
         )
 
+    def test_message_notification_type(self):
+        message = messages.Message(text='Hello World')
+        request = messages.MessageRequest(self.recipient, message, 'INVALID')
+        self.assertRaises(ValueError, request.serialise)
+
+        request = messages.MessageRequest(self.recipient, message, 'REGULAR')
+        self.assertIsInstance(request.serialise(), str)
+
     def test_image_url(self):
         attachment = attachments.ImageAttachment(
             url='https://petersapparel.com/img/shirt.png'
@@ -51,5 +59,4 @@ class MessagesTestCase(TestCase):
             request.serialise(),
             '{"message": {"attachment": {"type": "template", "payload": {"template_type": "button", "text": "What do you want to do next?", "buttons": [{"url": "https://petersapparel.parseapp.com", "type": "web_url", "title": "Show website"}, {"type": "postback", "payload": "USER_DEFINED_PAYLOAD", "title": "Start chatting"}]}}}, "recipient": {"id": "123"}}'
         )
-
 

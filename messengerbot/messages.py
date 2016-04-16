@@ -47,7 +47,10 @@ class MessageRequest(object):
     def notification_type(self):
         if self._notification_type:
             if self._notification_type not in self.NOTIFICATION_TYPE_OPTIONS:
-                raise ValueError()
+                raise ValueError(
+                    'notification_type valid options: %s' %
+                    str(self.NOTIFICATION_TYPE_OPTIONS)
+                )
         return self._notification_type
 
     def to_dict(self):
