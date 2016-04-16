@@ -60,3 +60,22 @@ class MessagesTestCase(TestCase):
             '{"message": {"attachment": {"type": "template", "payload": {"template_type": "button", "text": "What do you want to do next?", "buttons": [{"url": "https://petersapparel.parseapp.com", "type": "web_url", "title": "Show website"}, {"type": "postback", "payload": "USER_DEFINED_PAYLOAD", "title": "Start chatting"}]}}}, "recipient": {"id": "123"}}'
         )
 
+    def test_generic_template(self):
+        element = elements.Element(
+            title='Classic White T-Shirt',
+            image_url='http://petersapparel.parseapp.com/img/item100-thumb.png',
+            subtitle='Soft white cotton t-shirt is back in style',
+            buttons=[
+                elements.WebUrlButton(
+                    title='View Item',
+                    url='https://petersapparel.parseapp.com/view_item?item_id=100',
+                )
+            ]
+        )
+
+        template = templates.GenericTemplate([element])
+        attachment = attachments.TemplateAttachment(template)
+        message = messages.Message(attachment=attachment)
+        request = messages.MessageRequest(self.recipient, message)
+        # Assert we can serialise
+        self.assertIsInstance(request.serialise(), str)
