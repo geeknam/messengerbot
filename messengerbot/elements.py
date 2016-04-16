@@ -42,7 +42,7 @@ class Button(object):
     def __init__(self, title):
         if len(title) > 20:
             raise ValueError('Button title limit is 20 characters')
-        self._title = title
+        self.title = title
 
     def to_dict(self):
         serialised = {
