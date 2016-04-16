@@ -30,7 +30,7 @@ class MessengerClient(object):
         }
         response = requests.post(
             self.GRAPH_API_URL, params=params,
-            json=message.serialise()
+            json=message.to_dict()
         )
         if response.status_code != 200:
             MessengerError(

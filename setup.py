@@ -4,7 +4,7 @@ setup(
     name='messengerbot',
     packages=['messengerbot'],
     license='The MIT License (MIT)',
-    version='0.1.2',
+    version='0.1.3',
     description='Python client for FB Messenger Platform Bot',
     long_description=open('README.rst').read(),
     author='Nam Ngo',
