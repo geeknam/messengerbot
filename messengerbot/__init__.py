@@ -1,3 +1,5 @@
+import os
+
 
 class MessengerException(Exception):
     pass
@@ -36,3 +38,9 @@ class MessengerClient(object):
         return response.json()
 
 
+ENV_KEY = 'MESSENGER_PLATFORM_ACCESS_TOKEN'
+
+if ENV_KEY in os.environ:
+    messenger = MessengerClient(
+        access_token=os.environ[ENV_KEY]
+    )

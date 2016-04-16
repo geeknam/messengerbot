@@ -30,11 +30,17 @@ Read about `Messenger Platform <https://developers.facebook.com/docs/messenger-p
 
    from messengerbot import MessengerClient, messages, attachments, templates, elements
 
+   # Manully initialise client
    messenger = MessengerClient(access_token='your_token')
+
+   # With env var export MESSENGER_PLATFORM_ACCESS_TOKEN=your_token
+   from messengerbot import messenger
+
+   recipient = messages.Recipient(recipient_id='123')
 
    # Send text message
    message = messages.Message(text='Hello World')
-   request = messages.MessageRequest(self.recipient, message)
+   request = messages.MessageRequest(recipient, message)
    messenger.send(request)
 
    # Send button template
@@ -55,7 +61,7 @@ Read about `Messenger Platform <https://developers.facebook.com/docs/messenger-p
    attachment = attachments.TemplateAttachment(template=template)
 
    message = messages.Message(attachment=attachment)
-   request = messages.MessageRequest(self.recipient, message)
+   request = messages.MessageRequest(recipient, message)
    messenger.send(request)
 
 
