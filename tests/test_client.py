@@ -21,7 +21,10 @@ class ClientTestCase(TestCase):
         messenger.send(request)
 
         mock_post.assert_called_with(
-            MessengerClient.GRAPH_API_URL,
-            json={"message": {"text": "Hello World"}, "recipient": {"id": "123"}},
+            'https://graph.facebook.com/v2.6/me/messages',
+            json={
+                "message": {"text": "Hello World"},
+                "recipient": {"id": "123"}
+            },
             params={'access_token': '1234'}
         )

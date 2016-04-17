@@ -19,7 +19,7 @@ class MessengerError(object):
 
 class MessengerClient(object):
 
-    GRAPH_API_URL = 'https://graph.facebook.com/v2.6/me/messages'
+    GRAPH_API_URL = 'https://graph.facebook.com/v2.6/me'
 
     def __init__(self, access_token):
         self.access_token = access_token
@@ -29,7 +29,8 @@ class MessengerClient(object):
             'access_token': self.access_token
         }
         response = requests.post(
-            self.GRAPH_API_URL, params=params,
+            '%s/messages' % self.GRAPH_API_URL,
+            params=params,
             json=message.to_dict()
         )
         if response.status_code != 200:
@@ -37,6 +38,18 @@ class MessengerClient(object):
                 **response.json()['error']
             ).raise_exception()
         return response.json()
+
+    def subscribe_app(self):
+        """
+        Subscribe an app to get updates for a page.
+        """
+        response = request.post(
+            '%s/subscribed_apps' % self.GRAPH_API_URL,
+            params={
+                'access_token': self.access_token
+            }
+        )
+        return response.status_code == 200
 
 
 ENV_KEY = 'MESSENGER_PLATFORM_ACCESS_TOKEN'
