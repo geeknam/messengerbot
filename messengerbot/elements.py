@@ -28,16 +28,17 @@ class Element(object):
         return self._subtitle
 
     def to_dict(self):
-        return {
+        serialised = {
             'title': self.title,
             'item_url': self.item_url,
             'image_url': self.image_url,
-            'subtitle': self.subtitle,
-            'buttons': [
+            'subtitle': self.subtitle
+        }
+        if self.buttons:
+            serialised['buttons']= [
                 button.to_dict() for button in self.buttons
             ]
-        }
-
+        return serialised
 
 class Button(object):
 
