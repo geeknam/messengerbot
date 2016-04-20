@@ -35,7 +35,7 @@ class Element(object):
             'subtitle': self.subtitle
         }
         if self.buttons:
-            serialised['buttons']= [
+            serialised['buttons'] = [
                 button.to_dict() for button in self.buttons
             ]
         return serialised
