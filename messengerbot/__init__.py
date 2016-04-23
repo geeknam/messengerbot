@@ -43,7 +43,7 @@ class MessengerClient(object):
         """
         Subscribe an app to get updates for a page.
         """
-        response = request.post(
+        response = requests.post(
             '%s/subscribed_apps' % self.GRAPH_API_URL,
             params={
                 'access_token': self.access_token
