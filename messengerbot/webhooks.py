@@ -7,7 +7,7 @@ class WebhookMessaging(object):
     def __init__(self, sender, recipient, timestamp, **kwargs):
         self.sender = Recipient(recipient_id=sender['id'])
         self.recipient = Recipient(recipient_id=sender['id'])
-        self.timestamp = datetime.utcfromtimestamp(timestamp)
+        self.timestamp = datetime.utcfromtimestamp(timestamp/1000)
 
         for key, value in kwargs.items():
             self.__dict__['_%s' % key] = value
@@ -30,7 +30,7 @@ class WebhookEntry(object):
     def __init__(self, id, time, messaging):
         self.id = id
         # TODO parse epoch
-        self.time = datetime.utcfromtimestamp(time)
+        self.time = datetime.utcfromtimestamp(time/1000)
         self.messaging = [
             WebhookMessaging(**each)
             for each in messaging
