@@ -12,10 +12,9 @@ class MessengerError(object):
         self.__dict__.update(**kwargs)
 
     def raise_exception(self):
-        raise MessengerError(
-            self.error_data
+        raise MessengerException(
+            getattr(self, 'error_data', self.message)
         )
-
 
 class MessengerClient(object):
 
