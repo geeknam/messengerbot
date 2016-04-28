@@ -7,22 +7,29 @@ class WebhookTestCase(TestCase):
 
     def setUp(self):
         self.payload = {
-            "object": "page",
-            "entry": [{
-                "id": '123',
-                "time": 1460905554,
-                "messaging": [
-                    {
-                        "sender": {
-                            "id": '1234'
-                        },
-                        "recipient": {
-                            "id": '1234'
-                        },
-                        "timestamp": 1460905554
-                    }
-                ]
-            }]
+          "object":"page",
+          "entry":[
+            {
+              "id":"PAGE_ID",
+              "time":1460245674269,
+              "messaging":[
+                {
+                  "sender":{
+                    "id":"USER_ID"
+                  },
+                  "recipient":{
+                    "id":"PAGE_ID"
+                  },
+                  "timestamp":1460245672080,
+                  "message":{
+                    "mid":"mid.1460245671959:dad2ec9421b03d6f78",
+                    "seq":216,
+                    "text":"hello"
+                  }
+                }
+              ]
+            }
+          ]
         }
 
     def test_message_webhook(self):
