@@ -21,10 +21,11 @@ class Element(object):
 
     @property
     def subtitle(self):
-        if len(self._subtitle) > 80:
-            raise ValueError(
-                'Element.subtitle has more than 80 characters'
-            )
+        if self._subtitle:
+            if len(self._subtitle) > 80:
+                raise ValueError(
+                                 'Element.subtitle has more than 80 characters'
+                                 )
         return self._subtitle
 
     def to_dict(self):
