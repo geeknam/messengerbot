@@ -11,6 +11,8 @@ messengerbot
 .. image:: https://landscape.io/github/geeknam/messengerbot/master/landscape.svg?style=flat
    :target: https://landscape.io/github/geeknam/messengerbot/master
    :alt: Code Health
+.. image:: https://coveralls.io/repos/github/geeknam/messengerbot/badge.svg?branch=master
+   :target: https://coveralls.io/github/geeknam/messengerbot?branch=master
 .. image:: https://img.shields.io/gratipay/geeknam.svg
    :target: https://gratipay.com/geeknam/
 
