@@ -8,6 +8,9 @@ messengerbot
 .. image:: https://secure.travis-ci.org/geeknam/messengerbot.png?branch=master
    :alt: Build Status
    :target: http://travis-ci.org/geeknam/messengerbot
+.. image:: https://landscape.io/github/geeknam/messengerbot/master/landscape.svg?style=flat
+   :target: https://landscape.io/github/geeknam/messengerbot/master
+   :alt: Code Health
 .. image:: https://img.shields.io/gratipay/geeknam.svg
    :target: https://gratipay.com/geeknam/
 
