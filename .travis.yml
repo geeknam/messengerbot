@@ -6,6 +6,6 @@ install:
   - pip install mock
   - pip install requests
   - pip install coveralls
-script: nosetests --with-coverage
+script: nosetests --with-coverage --cover-package=messengerbot
 after_success:
   coveralls
