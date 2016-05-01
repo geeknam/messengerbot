@@ -5,4 +5,7 @@ install:
   - pip install nose
   - pip install mock
   - pip install requests
-script: nosetests
+  - pip install coveralls
+script: nosetests --with-coverage
+after_success:
+  coveralls
