@@ -6,7 +6,7 @@ class WebhookMessaging(object):
 
     def __init__(self, sender, recipient, timestamp=None, **kwargs):
         self.sender = Recipient(recipient_id=sender['id'])
-        self.recipient = Recipient(recipient_id=sender['id'])
+        self.recipient = Recipient(recipient_id=recipient['id'])
         if timestamp is not None:
             self.timestamp = datetime.utcfromtimestamp(timestamp / 1000)
 
