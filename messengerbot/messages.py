@@ -5,7 +5,7 @@ class Message(object):
 
     def __init__(self, text=None, attachment=None):
         if not text and not attachment:
-            raise ValueError()
+            raise ValueError('<Message> text or attachment must be set')
         self.text = text
         self.attachment = attachment
 
