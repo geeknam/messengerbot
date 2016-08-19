@@ -35,7 +35,7 @@ Read about `Messenger Platform <https://developers.facebook.com/docs/messenger-p
 
    from messengerbot import MessengerClient, messages, attachments, templates, elements
 
-   # Manully initialise client
+   # Manually initialize client
    messenger = MessengerClient(access_token='your_token')
 
    # With env var export MESSENGER_PLATFORM_ACCESS_TOKEN=your_token
