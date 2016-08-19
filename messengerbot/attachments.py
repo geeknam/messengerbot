@@ -1,6 +1,11 @@
 
 class Attachment(object):
 
+    def __new__(cls, *args, **kwargs):
+        if cls is Attachment:
+            raise TypeError("attachment class cannot be instantiated")
+        return object.__new__(cls, *args, **kwargs)
+
     def to_dict(self):
         return {
             'type': self.attachment_type,
