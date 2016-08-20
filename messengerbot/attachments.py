@@ -1,11 +1,11 @@
+import abc
 
-class Attachment(object):
 
-    def __new__(cls, *args, **kwargs):
-        if cls is Attachment:
-            raise TypeError("attachment class cannot be instantiated")
-        return object.__new__(cls, *args, **kwargs)
+class Attachment:
 
+    __metaclass__ = abc.ABCMeta
+
+    @abc.abstractmethod
     def to_dict(self):
         return {
             'type': self.attachment_type,
@@ -26,6 +26,10 @@ class ImageAttachment(Attachment):
             'url': self._url
         }
 
+    def to_dict(self):
+        _super_obj = super(ImageAttachment, self)
+        return _super_obj.to_dict()
+
 
 class TemplateAttachment(Attachment):
 
@@ -37,3 +41,7 @@ class TemplateAttachment(Attachment):
     @property
     def payload(self):
         return self.template.to_dict()
+
+    def to_dict(self):
+        _super_obj = super(TemplateAttachment, self)
+        return _super_obj.to_dict()
