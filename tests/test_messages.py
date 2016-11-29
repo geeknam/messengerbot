@@ -1,9 +1,8 @@
 from unittest import TestCase
-from messengerbot import messages, attachments, templates, elements
+from messengerbot import messages, attachments, templates, elements, quick_replies
 
 
 class MessagesTestCase(TestCase):
-
     def setUp(self):
         self.recipient = messages.Recipient(recipient_id='123')
 
@@ -79,3 +78,17 @@ class MessagesTestCase(TestCase):
         request = messages.MessageRequest(self.recipient, message)
         # Assert we can serialise
         self.assertIsInstance(request.serialise(), str)
+
+    def test_quick_replies(self):
+        quick_reply = quick_replies.QuickReplyItem(
+            content_type='text',
+            title='New order',
+            payload='Create new order'
+        )
+        replies = quick_replies.QuickReplies(quick_replies=[quick_reply, ])
+        message = messages.Message(text='My shopping cart', quick_replies=replies)
+        request = messages.MessageRequest(self.recipient, message)
+        self.assertEquals(
+            request.serialise(),
+            '{"message": {"text": "My shopping cart", "quick_replies": [{"image_url": null, "payload": "Create new order", "content_type": "text", "title": "New order"}]}, "recipient": {"id": "123"}}'
+        )

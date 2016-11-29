@@ -1,5 +1,9 @@
 class QuickReplyItem(object):
-    def __init__(self, content_type, title, payload, image_url=None):
+    def __init__(self, content_type, title=None, payload=None, image_url=None):
+        if content_type == 'text':
+            if not title and not payload:
+                raise ValueError('<Message> must be set')
+
         if len(title) > 20:
             raise ValueError('Quick reply title limit is 20 characters')
 
