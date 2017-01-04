@@ -2,12 +2,12 @@ import json
 
 
 class Message(object):
-
-    def __init__(self, text=None, attachment=None):
+    def __init__(self, text=None, attachment=None, quick_replies=None):
         if not text and not attachment:
             raise ValueError('<Message> text or attachment must be set')
         self.text = text
         self.attachment = attachment
+        self.quick_replies = quick_replies
 
     def to_dict(self):
         data = {}
@@ -15,11 +15,12 @@ class Message(object):
             data['text'] = self.text
         if self.attachment:
             data['attachment'] = self.attachment.to_dict()
+        if self.quick_replies:
+            data['quick_replies'] = self.quick_replies.to_dict()
         return data
 
 
 class Recipient(object):
-
     def __init__(self, recipient_id=None, phone_number=None):
         if not recipient_id and not phone_number:
             raise ValueError('<Recipient> id or phone_number must be set')
@@ -33,7 +34,6 @@ class Recipient(object):
 
 
 class MessageRequest(object):
-
     NOTIFICATION_TYPE_OPTIONS = (
         'REGULAR', 'SILENT_PUSH', 'NO_PUSH'
     )
